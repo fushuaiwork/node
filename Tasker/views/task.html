@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TASKER || Task</title>
+<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
+
+<script type="text/javascript">
+window.onload = function() 
+{ 
+	var obj = document.getElementById("infodiv");
+	var tasks = document.getElementById("tasks");
+	var taskli = tasks.getElementsByTagName("a");
+	var taskname = document.getElementById("taskname");
+	for(var i = 0;i<taskli.length;i++){
+		taskli[i].index = i;
+		taskli[i].onclick = function(){
+			obj.style.display = "block";
+			taskname.innerHTML = taskli[this.index].innerHTML;
+		}
+	}
+}
+</script>
+</head>
+<body>
+	<div class="bg_top">
+		<div class="header_bg">
+			<div class="header"></div>
+		</div>
+	</div>
+	<div class="page_box page_box_bg">
+		<div class="home_menu">
+			<a href="index.html"></a>
+		</div>
+		<div class="index_left page_left geam_l">
+			<div class="title">tasks</div>
+			<ul id="tasks" class="scorelist">
+				<li><a href="#">sfdxcfghkjkh</a></li>
+				<li><a href="#">sfdsfsdgdsxcfghkjkh</a></li>
+				<li><a href="#">ddddd</a></li>
+				<li><a href="#">qqqsfdxcfghkjkh</a></li>
+				<li><a href="#">aasfdxsafdcfghkjkh</a></li>
+			</ul>
+		</div>
+		<div class="index_right page_right pro1_l">
+			<div id="infodiv" class="taskinfo" style="display:none;">
+			<table  border="1px">
+				<tr>
+					<td id="taskname" colspan="2" style="font-size:36px;width:360px;height:100px"></td>
+				</tr>
+				<tr>
+					<td width="150px" height="30px" style="font-size:16px">type</td><td align="right">2017-12-01</td>
+				</tr>
+				<tr>
+					<td colspan="2" height="350px" valign="top" style="font-size:22px;padding:10px">任务说明任务说明任务说明</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+		<div class="page_right_menu">
+			<form>
+			<ul>
+				<li class="menu_1"><a class="on" title="Info"></a></li>
+                <li class="menu_2"><a id='task' title="Task"></a></li>
+                <li class="menu_5"><a id='event' title="Event"></a></li>
+                <li class="menu_6"><a id='news' title="New"></a></li>
+                <li class="menu_4"><a id='about' title="About"></a></li>
+			</ul>
+			</form>
+		</div>
+	</div>
+	<div class="page_bot"></div>
+	<div class="footer">
+		<div class="footer_right">
+			<p>Copyright&copy;2017 F5.</p>
+		</div>
+	</div>
+	<script src="../public/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../public/js/ajax.js"></script>>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TASKER</title>
+<link rel="stylesheet" type="text/css" href="../public/css/login.css" />
+<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
+<script type="text/javascript">
+	
+
+	$('#js-btn-login').on({
+		click : function(){
+			var username = $('#username').val()
+			var password = $('#password').val()
+			if(username == ''){
+				alert('Please enter username')
+				return false
+			}
+			var reg = /^[a-z0-9_-]{6,18}$/
+			if(!reg.test(password)){
+				alert('password isn\'t long enough')
+				return false
+			}
+			$.post('/login/signIn',{username:username,password:password},function(res){
+				if(res.success == 1){
+					$.get('/home')
+				}else{
+					alert(res.err)
+				}
+
+			},'json')
+		}
+	})
+	})
+</script>
+</head>
+<body>
+	<div class="bg_top">
+		<div class="header_bg">
+			<div class="header"></div>
+		</div>
+	</div>
+	<div class="page_box" style="height: 646px;">
+		<div class="index_left">
+		<div id="loginbox">
+			<section id="content">
+			<form id="login">
+				<h1>Login</h1>
+				<div>
+					<input type="text" placeholder="username" id="username" />
+				</div>
+				<div>
+					<input type="password" placeholder="password" id="password" />
+				</div>
+				<div>
+					<input type="submit" value="Login" class="btn btn-primary" id="js-btn-login" /> <a href="#">Password Forgotten ?</a>
+				</div>
+			</form>
+			<!-- form -->
+			<div class="button">
+				<a href="#">Register</a>
+			</div>
+			<!-- button --> </section>
+			<!-- content -->
+		</div>
+		</div>
+		<div class="index_right">
+			<a href="info.html"><img src="../public/img/cloud_05.jpg" alt="TASKER" /></a>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer_right">
+			<p>Copyright&copy;2017 F5.</p>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TASKER || Event</title>
+<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
+<script type="text/javascript">
+window.onload = function() 
+{ 
+	var obj = document.getElementById("chatroom");
+	var events = document.getElementById("events");
+	var a_event = events.getElementsByTagName("a");
+	var eventname = document.getElementById("eventname");
+	for(var i = 0;i<a_event.length;i++){
+		a_event[i].index = i;
+		a_event[i].onclick = function(){
+			obj.style.display = "block";
+			eventname.innerHTML = a_event[this.index].innerHTML;
+		}
+	}
+}
+</script>
+</head>
+<body>
+	<div class="bg_top">
+		<div class="header_bg">
+			<div class="header"></div>
+		</div>
+	</div>
+	<div class="page_box page_box_bg">
+		<div class="home_menu">
+			<a href="index.html"></a>
+		</div>
+		<div class="index_left page_left geam_l">
+			<div class="title">events</div>
+			<table id="events" width=320px cellpadding="0" cellspacing="0" class="yx" style="margin-top: 30px;">
+				<tr>
+					<td><a href="#">sfdxcfghkjkh</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">dcgfvgbhkliynikl</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">ilugfrcvyghbnjbb</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">ughyulioj;o</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">ffgcvbkhjlklm,l;</a></td>
+				</tr>
+			</table>
+		</div>
+		<div class="index_right page_right geam_r">
+			<div id="chatroom" class="chatroom" style="display:none;">
+				<div id="eventname" align="right"></div>
+				<div class="game_box"></div>
+				<div class="t_box">
+				<textarea rows="6" cols="40" class="message"></textarea>
+					<div class="no1_cloud"></div>
+				</div>
+			</div>
+		</div>
+		<div class="page_right_menu">
+			<ul>
+				<li class="menu_1"><a href="info.html" title="Info"></a></li>
+				<li class="menu_2"><a href="task.html" title="Task"></a></li>
+				<li class="menu_5"><a class="on" href="event.html" title="Event"></a></li>
+				<li class="menu_6"><a href="new.html" title="New"></a></li>
+				<li class="menu_4"><a href="about.html" title="About"></a></li>
+			</ul>
+		</div>
+		</div>
+	<div class="page_bot"></div>
+	<div class="footer">
+		<div class="footer_right">
+			<p>Copyright&copy;2017 F5.</p>
+		</div>
+	</div>
+</body>
+</html>

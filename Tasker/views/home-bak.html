@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/css.css">
+    <link rel="stylesheet" href="../public/css/bootstrap-datetimepicker.min.css">
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">xxx聊天室</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 60px">
+    <div class="row col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3 sidebar">
+            <!--个人信息区-->
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-user">&nbsp;个人信息</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-6">
+                            <img src="{{image}}" alt="个人图像" style="width: 100%;" id="userImage">
+                        </div>
+                        <div class="col-sm-6">
+                            <p>昵称：<span id="username">{{username}}</span></p>
+                            <p><a data-toggle="modal" data-target="#changeInfo">修改信息</a></p>
+			    <p><a data-toggle="modal" data-target="#createTask">AddTask</a></p>
+			    <p><a data-toggle="modal" data-target="#invitEvent">Hold Event</a></p>
+                            <p><a id="exitBtn">退出</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-pushpin">&nbsp;MyTasks</h4>
+                    </div>
+                    <div class="panel-body">
+			<div class="list-group">
+                        	<ul id="">
+                        	</ul>
+			</div>
+                    </div>
+                    <div class="panel-footer" >
+                        You have：<span></span> tasks
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+		<div class="col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="glyphicon glyphicon-leaf">&nbsp;MyEvents</h4>
+				</div>
+				<div class="panel-body">
+                    <div id="taskList" class="list-group">
+
+                    </div>
+					
+				</div>
+				<div class="panel-footer" id="list-count">
+					You have : <span></span> tasks
+				</div>
+			</div>
+		</div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-leaf">&nbsp;Events</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+				<a href='#' class="list-group-item list-group-item-action flex-column">
+					<div class="d-flex w-100 justify-content-between">
+					<h3 class="mb-1">Go for a Run!</h3>
+					<small>Tomorrow morning</small>
+					</div>
+					<h4 class="mb-1">JOIN US!</h4>
+					<small>10 people,have drinks,snacks,happy!</small>
+				</a>
+			</div>
+			<div class="list-group">
+                                <a href='#' class="list-group-item list-group-item-action flex-column">
+                                        <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Cinema</h5>
+                                        <small>Friday night</small>
+                                        </div>
+                                        <p class="mb-1">IRON MAN 4</p>
+                                        <small>Intrested in Marvel movies</small>
+                                </a>
+                        </div>
+			<div class="list-group">
+                                <a href='#' class="list-group-item list-group-item-action flex-column">
+                                        <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Party!!!</h5>
+                                        <small>Saturday night</small>
+                                        </div>
+                                        <p class="mb-1">HAVE FUN</p>
+                                        <small>drinks,snacks,dance</small>
+                                </a>
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="invitEvent">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+	<span>&times;</span></button>
+				<h4 class="modal-title">Hold a Event!</h4>
+			</div>
+			<div class="modal-body">
+			<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+				<label for="e_name">Event name</label>
+				<input id="e_name" type="text" class="form-control"></div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+				<label for="e_type">Event type</label>
+				<select id="e_type" class="form-control">
+					<option>Sport</option>
+					<option>Cinema</option>
+					<option>Party</option>
+				</select></div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+                                <label for="starttime">Start date</label>
+                                   <div class="input-group date" id="starttime">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                   </div></div>
+                        </div>
+                        <div class="col-sm-6">
+				<div class="form-group">
+                                <label for="endtime">End date</label>
+                                <div class="input-group date" id="endtime">
+                                	<input type="text" class="form-control" />
+                                                <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                </div></div>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-12">
+				<div class="form-group">
+				<label for="e_description" class="col-form-label">Description</label>
+				<textarea id="e_description" resize="none" row="5" class="form-control"></textarea>
+			</div> </div></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="launchevent">Launch</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal fade" id="createTask">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="close"><span>&times;</span>
+				</button>
+				<h4 class="modal-title">Add task</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="t_name" class="col-form-label">Task name</label>
+					<input type="text" class="form-control" id="t_name" value="{{t_name}}">
+				</div>
+				<div class="form-group">
+					<label for="t_descript" class-"col-form-label">Description</label>
+					<textarea type="text" style="resize:none" class="form-control" id="t_descript" row="5"></textarea>
+				</div>
+                <div class="alert alert-warning" hidden="true" id="w" role="alert">
+                        <strong>Please enter task title</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&itmes;</span>
+                        </button>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="addtask">Add</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>	
+		</div>
+	</div>
+
+</div>
+
+
+<div class="modal fade" id="changeInfo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                </button>
+                <h4 class="modal-title">修改信息</h4>
+            </div>
+            <div class="modal-body">
+                <p>昵称：<input type="text" class="form-control" id="newName" value="{{username}}"></p>
+                <div class="imgBox">
+                    图像：<img src="{{image}}" alt="" id="editImage">
+                    <input type="file" accept="image/*" id="fileImg"
+                           onchange="editImageFn(event)">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="editBtn">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../public/js/moment-with-locales.min.js"></script>
+<script src="../public/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../public/js/jquery-1.11.2.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../public/js/js.js"></script>
+</body>
+</html>

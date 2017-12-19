@@ -1,0 +1,29 @@
+{
+  "name": "chat.io",
+  "version": "1.0.0",
+  "description": "本文是由nodejs+mongoose+websocket打造的一个即时聊天系统；本来打算开发一个类似于网页QQ类似功能的聊天系统，但是目前只是开发了一个模块功能 --- 类似群聊的，即一对多的聊天模式；因为时间关系，一对一私聊功能还没有开发，敬请期待！",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajax": "0.0.4",
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-datetimepicker": "0.0.7",
+    "cookie-parser": "^1.4.3",
+    "cookies": "^0.7.0",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.3",
+    "mongoose": "^4.13.6",
+    "socket.io": "^2.0.1",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}

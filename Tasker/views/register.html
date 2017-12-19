@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" media="screen">
+</head>
+<body>
+<div class="container-fluid">
+    <form id="form" role="form" onsubmit="return false;" class="col-sm-offset-4 col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p>Tasker Register</p>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class=" glyphicon glyphicon-user"></span>
+                        </p>
+                        <input type="text" class="form-control" id="username" placeholder="enter your username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class="glyphicon  glyphicon-align-justify"></span>
+                        </p>
+                        <select id="gender" class="form-control">
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                         </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class="glyphicon  glyphicon-time"></span>
+                        </p>
+                        <input type="text" class="form-control" id="year" placeholder="year" />
+                        <input type="text" class="form-control" id="month" placeholder="month"/>
+                        <input type="text" class="form-control" id="day" placeholder="day"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class="glyphicon  glyphicon-lock"></span>
+                        </p>
+                        <input type="password" class="form-control" id="password" placeholder="please enter your password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class="glyphicon  glyphicon-pencil"></span>
+                        </p>
+                        <input type="password" class="form-control" id="rePassword" placeholder="please enter your password again">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <p class=" input-group-addon  ">
+                            <span class="glyphicon  glyphicon-envelope"></span>
+                        </p>
+                        <input type="email" class="form-control" id="e-mail" placeholder="Please enter your email">
+                    </div>
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn btn-default" id="register">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../public/js/jquery-1.11.2.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script>
+    $('#register').on({
+        click: function () {
+            var username = $('#username').val()
+            var password = $('#password').val()
+            var rePassowrd = $('#rePassword').val()
+            var gender = $('gender').val()
+            var year = $('year').val()
+            var month = $('month').val()
+            var day= $('day').val()
+            var email = $('e-mail').val()
+            if (username == '') {
+                alert('Please enter your username')
+                return false
+            }
+            var reg = /^[a-z0-9_-]{6,18}$/
+            var regyear = /^[0-9]{4,4}$/
+            var regmonth = /^[0-9]{1,2}$/
+            var regday = /^[0-9]{1,2}$/
+
+            /*if(!regyear.test(year)){
+                alert('wrong format of year')
+                return false
+            }
+            if(!regmonth.test(month)){
+                alert('wrong format of month')
+                return false
+            }
+            if(!regday.test(day)){
+                alert('wrong format of day')
+                return false
+            }*/
+
+            if (!reg.test(password)) {
+                alert('Please enter password correctly')
+                return false
+            }
+
+            if (password !== rePassowrd) {
+                alert('password not the same')
+                return false
+            }
+
+            $.post('/register/signUp', {username: username, password: password,gender: gender,email: email}, function (res) {
+                if (res.success == 1) {
+
+                    location.href = 'login'
+                } else {
+                    alert(res.err)
+                }
+            }, 'json')
+        }
+    })
+
+</script>
+</body>
+</html>

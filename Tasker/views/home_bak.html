@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/css.css">
+    <link rel="stylesheet" href="../public/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../public/css/bootstrap-datetimepicker.min.css">
+    <script src="../public/js/moment-with-locales.min.js"></script>
+    <script src="../public/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/bootstrap-datetimepicker.js"></script>
+    <script src="../public/js/jquery-1.11.2.min.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">xxx聊天室</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 60px">
+    <div class="row col-sm-12 col-md-12">
+        <div class="col-sm-3 col-md-3 sidebar">
+            <!--个人信息区-->
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-user">&nbsp;个人信息</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-6">
+                            <img src="{{image}}" alt="个人图像" style="width: 100%;" id="userImage">
+                        </div>
+                        <div class="col-sm-6">
+                            <p>昵称：<span id="username">{{username}}</span></p>
+                            <p><a data-toggle="modal" data-target="#changeInfo">修改信息</a></p>
+			    <p><a data-toggle="modal" data-target="#createTask">AddTask</a></p>
+			    <p><a data-toggle="modal" data-target="#invitEvent">Hold Event</a></p>
+                            <p><a id="exitBtn">退出</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-pushpin">&nbsp;Event List</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="peopleList">
+                        </ul>
+                    </div>
+                    <div class="panel-footer" id="list-count">
+                        You have：<span></span> events
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9  col-md-9">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="glyphicon glyphicon-leaf">&nbsp;Events</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="MsgList" class="list">
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="infoBox">
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav option">
+                                    <li>
+                                        <img src="../public/img/smail.png" alt="" id="smileBtn">
+                                    </li>
+                                    <li>
+                                        <div class="files">
+                                            <img src="../public/img/pic.png" alt="" id="addImage">
+                                            <input type="file" accept="image/*" id="files"
+                                                   onchange="changeFiles(event)">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="infoInput text-right">
+                                <textarea id="msgInput" class="form-control"></textarea>
+                                <br>
+                                <button class="btn btn-info " id="sendBtn">发送</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="invitEvent">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+	<span>&times;</span></button>
+				<h4 class="modal-title">Hold a Event!</h4>
+			</div>
+			<div class="modal-body">
+			<div class="container-fluid">
+			<div class="row">
+				<label for="e_name">Event name</label>
+				<div class="form-group">
+				<input id="e_name" type="text" class="form-control" value="{{e_name}}">
+				</div>
+			</div>
+			<div class="row">
+				<label for="e_type">Event type</label>
+				<div class="form-group">
+					<select id="e_type" class="form-control">
+						<option>Sport</option>
+						<option>Cinema</option>
+						<option>Party</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<label for="e_description">Description</label>
+				<div class="form-group">
+					<textarea id="e_description" row="3" class="form-control" value="{{e_type}}"></textarea>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col">
+				<div class="form-group">
+				<label for="starttime">Start date</label>
+                		   <div class='input-group date' id='starttime'>
+                    			<input type='text' class="form-control" />
+                    			<span class="input-group-addon">
+                        			<span class="glyphicon glyphicon-calendar"></span>
+                    			</span>
+              			   </div>
+        		        </div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label for="endtime">End date</label>
+					<div class-"input-group date" id="endtime">
+						<input type="text" class="form-control" />
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			</div>			
+			</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="addevent">Launch</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal fade" id="createTask">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="close"><span>&times;</span>
+				</button>
+				<h4 class="modal-title">Add task</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+				<div class="row">
+					<label for="t_name">Task name</label>
+					<div class="form-group">
+						<input type="text" class="form-control" id="t_name" value="{{t_name}}">
+					</div>
+				</div>
+				<div class="row">
+					<label for="t_descript">Description</label>
+					<div class="form-group">
+						<textarea type="text" class="form-control" id="t_descript" value="{{t_descript}}"></textarea>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="addtask">Add</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>	
+		</div>
+	</div>
+
+</div>
+
+
+<div class="modal fade" id="changeInfo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                </button>
+                <h4 class="modal-title">修改信息</h4>
+            </div>
+            <div class="modal-body">
+                <p>昵称：<input type="text" class="form-control" id="newName" value="{{username}}"></p>
+                <div class="imgBox">
+                    图像：<img src="{{image}}" alt="" id="editImage">
+                    <input type="file" accept="image/*" id="fileImg"
+                           onchange="editImageFn(event)">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="editBtn">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../public/js/moment-with-locales.min.js"></script>
+<script src="../public/jquery/dist/jquery.min.js"></script>
+<script src="../public/js/bootstrap-datetimepicker.js"></script>
+<script src="../public/js/jquery-1.11.2.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../public/js/js.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TASKER || Info</title>
+<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
+<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+<link rel="stylesheet" href="../public/css/css.css">
+<link rel="stylesheet" href="../public/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../public/css/bootstrap-datetimepicker.min.css">
+
+</head>
+<body>
+    <div class="bg_top">
+        <div class="header_bg">
+            <div class="header"></div>
+        </div>
+    </div>
+    <div class="page_box page_box_bg">
+        <div class="home_menu">
+            <a href="/home"></a>
+        </div>
+        <div class="index_left page_left about_l">
+            <div class="about_text">
+                <h1 id='username'>{{username}}</h1>
+                <table width="100%" cellpadding="0" cellspacing="0" class="ath">
+                    <tr>
+                        <td>age:</td>
+                        <td>{{age}}</td>
+                    </tr>
+                    <tr>
+                        <td>sex:</td>
+                        <td>{{sex}}</td>
+                    </tr>
+                    <tr>
+                        <td>email:</td>
+                        <td>{{email}}</td>
+                    </tr>
+                </table>
+                <a id="exitBtn">Exit</a>
+                <div class="ttask" style="margin: 60px auto 15px auto;">latest news</div>
+                <table width="100%" cellpadding="0" cellspacing="0" class="ath">
+                    <tr>
+                        <td><a href="#"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="index_right page_right about_r"></div>
+        <div class="page_right_menu">
+            <form>
+            <ul>
+                <li class="menu_1"><a class="on" title="Info"></a></li>
+                <li class="menu_2"><a id='task' title="Task"></a></li>
+                <li class="menu_5"><a id='event' title="Event"></a></li>
+                <li class="menu_6"><a id='news' title="New"></a></li>
+                <li class="menu_4"><a id='about' title="About"></a></li>
+            </ul>
+            </form>
+        </div>
+    </div>
+    <div class="page_bot"></div>
+    <div class="footer">
+        <div class="footer_right">
+            <p>Copyright&copy;2017 F5.</p>
+        </div>
+    </div>
+    <script src="../public/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../public/js/ajax.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+
+        function backtohome(){
+            location.href = 'home'
+        }
+
+        var username = $('#username').text()
+        //function gototask(){
+        $('#task').click(async function(){
+            $.post('/home/mytasks', {username:username}, function(res){
+                location.href = 'task'
+            })
+        })
+            
+        
+        $('exitBtn').click(async function(){
+            location.href = 'exit'
+        })
+    </script>
+    
+</body>
+</html>
